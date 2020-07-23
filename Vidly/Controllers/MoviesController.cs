@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Vidly.Models;
-
 namespace Vidly.Controllers
 {
     public class MoviesController : Controller
@@ -11,9 +10,9 @@ namespace Vidly.Controllers
             {
                 Name = "Shrek!"
             };
-
             //return View(movie);
             //return Content("hello world");
+            //return NotFound();
             return RedirectToAction("Privacy", "Home");
         }
     }
