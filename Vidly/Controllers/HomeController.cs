@@ -4,9 +4,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Vidly_.NetCore.Models;
+using Vidly.Models;
 
-namespace Vidly_.NetCore.Controllers
+namespace Vidly.Controllers
 {
     public class HomeController : Controller
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace Vidly_.NetCore.Models
+namespace Vidly.Models
 {
     public class ErrorViewModel
     {
