@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Vidly.Models;
 
 namespace Vidly.Controllers
@@ -11,12 +7,14 @@ namespace Vidly.Controllers
     {
         public IActionResult Random()
         {
-            var movie = new Movie()
+            var movie = new Movies()
             {
                 Name = "Shrek!"
             };
 
-            return View();
+            //return View(movie);
+            //return Content("hello world");
+            return RedirectToAction("Privacy", "Home");
         }
     }
 }
