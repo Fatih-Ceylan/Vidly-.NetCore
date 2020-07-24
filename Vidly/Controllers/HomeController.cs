@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Vidly.Models;
-
 namespace Vidly.Controllers
 {
     public class HomeController : Controller
@@ -10,12 +9,10 @@ namespace Vidly.Controllers
         {
             return View();
         }
-
         public IActionResult Privacy()
         {
             return View();
         }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
