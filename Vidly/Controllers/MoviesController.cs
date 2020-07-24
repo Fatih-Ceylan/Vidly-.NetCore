@@ -11,6 +11,7 @@ namespace Vidly.Controllers
             {
                 Name = "Shrek!"
             };
+
             //return View(movie);
             //return Content("hello world");
             //return NotFound();
