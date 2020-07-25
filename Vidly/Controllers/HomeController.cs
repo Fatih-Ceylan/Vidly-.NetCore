@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Vidly.Models;
+
 namespace Vidly.Controllers
 {
     public class HomeController : Controller
