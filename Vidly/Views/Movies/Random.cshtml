@@ -6,4 +6,27 @@
 
 }
 
-<h2>@Model.Movie.Name</h2>
+@{
+
+    ///  To make a dynamic class, below conditions are applied. if the conditions met, class will be visible, otherwise it will be hidden.
+
+    var className = Model.Customers.Count > 0 ? "popular" : null;
+}
+
+<h2 class="@className">@Model.Movie.Name</h2>
+
+
+@if (Model.Customers.Count == 0)
+{
+    <text>No one has rented this movie before.</text>
+
+}
+else
+{
+    <ul>
+        @foreach (var customer in Model.Customers)
+        {
+            <li>@customer.Name</li>
+        }
+    </ul>
+}
