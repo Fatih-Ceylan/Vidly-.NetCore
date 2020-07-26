@@ -50,6 +50,12 @@ namespace Vidly
 
             app.UseMvc(routes =>
             {
+                routes.MapRoute("MvoiesByRelaseDate",
+                    "movies/released/{year}/{month}",
+                    new { Controller = "Movies", action = "ByReleaseDate" },
+                    new { year = @"\d{4}", month = @"\d{2}" });
+
+
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
