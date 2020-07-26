@@ -11,10 +11,10 @@ namespace Vidly.Controllers
                 Name = "Shrek!"
             };
 
-            //return View(movie);
+           return View(movie);
             //return Content("hello world");
             //return NotFound();
-            return RedirectToAction("Privacy", "Home");
+            //return RedirectToAction("Privacy", "Home");
         }
         public ActionResult Edit(int id)
         {
