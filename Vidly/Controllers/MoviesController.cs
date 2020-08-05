@@ -11,8 +11,7 @@ namespace Vidly.Controllers
         {
             var movie = new Movies()
             {
-                Name = "Shrek!"
-                 
+                Name = "bbb!" ,
             };
 
             var customers = new List<Customer>
@@ -23,7 +22,7 @@ namespace Vidly.Controllers
 
             var viewModel = new RandomMovieViewModel
             {
-                Movie = movie,
+                Movie = movie ,
                 Customers = customers
             };
 
@@ -36,7 +35,7 @@ namespace Vidly.Controllers
         {
             return Content("id" + id);
         }
-        public IActionResult Index(int? pageIndex, string sortBy)
+        public IActionResult Index(int? pageIndex , string sortBy)
         {
             if (!pageIndex.HasValue)
             {
@@ -46,9 +45,9 @@ namespace Vidly.Controllers
             {
                 sortBy = "Name";
             }
-            return Content(string.Format("pageIndex={0} & sortBy={1}", pageIndex, sortBy));
+            return Content(string.Format("pageIndex={0} & sortBy={1}" , pageIndex , sortBy));
         }
-        public ActionResult ByReleaseDate(int year, int month)
+        public ActionResult ByReleaseDate(int year , int month)
         {
             return Content(year + "/" + month);
         }
