@@ -21,9 +21,14 @@
 </head>
 <body>
     <header>
-       @Html.PartialAsync("_NavBar")
-     
-    </header>
+        <partial name="_NavBar">
+
+            @* This one works but requires async method
+        @Html.Partial("_NavBar")*@
+       
+
+
+</header>
     <div class="container">
         <partial name="_CookieConsentPartial" />
         <main role="main" class="pb-3">
