@@ -11,7 +11,7 @@ namespace Vidly.Controllers
         {
             var movie = new Movies()
             {
-                Name = "bbb!" ,
+                Name = "aaa!" ,
             };
 
             var customers = new List<Customer>
@@ -47,6 +47,8 @@ namespace Vidly.Controllers
             }
             return Content(string.Format("pageIndex={0} & sortBy={1}" , pageIndex , sortBy));
         }
+
+        // You can use attribute routing instead of map route inside startup.cs [Route("movies/released/{year}/{month:regex(\\d{4}):range(1,12)}")]
         public ActionResult ByReleaseDate(int year , int month)
         {
             return Content(year + "/" + month);
