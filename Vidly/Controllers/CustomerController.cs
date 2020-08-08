@@ -8,18 +8,24 @@ namespace Vidly.Controllers
     public class CustomerController : Controller
     {
         static List<Customer> customers = new List<Customer>()
+        {
+            new Customer
             {
-             new Customer
-             {
-                Name ="Fatih Ceylan",
-                Id=1,
-             }
-             //new Customer
-             //{
-             //    Name="Mahmut Tuncer",
-             //    Id=2,
-             //}
+               Name ="Fatih Ceylan",
+               Id= 1,
+            },
+            new Customer
+            {
+                Name="Mahmut Tuncer",
+                Id=2,
+            },
+            new Customer
+            {
+                Name="İsmail Türüt",
+                Id=3,
+            }
         };
+
 
         [Route("~/Customers")]
         public IActionResult Customers()
@@ -30,10 +36,15 @@ namespace Vidly.Controllers
             };
             return View(viewModel);
         }
-        [HttpGet]
+
         public IActionResult Details(int? id)
         {
+
             var customer = customers.FirstOrDefault(a => a.Id == id);
+            if (customer == null)
+            {
+                return NotFound("Error");
+            }
             return View(customer);
 
         }
