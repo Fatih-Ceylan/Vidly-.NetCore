@@ -24,11 +24,9 @@
         <partial name="_NavBar">
 
             @* This one works but requires async method
-        @Html.Partial("_NavBar")*@
-       
+                @Html.Partial("_NavBar")*@
 
-
-</header>
+    </header>
     <div class="container">
         <partial name="_CookieConsentPartial" />
         <main role="main" class="pb-3">
@@ -62,6 +60,6 @@
     </environment>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
-    @RenderSection("Scripts", required: false)
+    @RenderSection("Scripts" , required: false)
 </body>
 </html>

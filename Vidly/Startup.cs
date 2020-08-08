@@ -31,7 +31,7 @@ namespace Vidly
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app , IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -50,14 +50,14 @@ namespace Vidly
 
             app.UseMvc(routes =>
             {
-                routes.MapRoute("MvoiesByRelaseDate",
-                    "movies/released/{year}/{month}",
-                    new { Controller = "Movies", action = "ByReleaseDate" },
-                    new { year = @"\d{4}", month = @"\d{2}" });
+                routes.MapRoute("MoviesByRelaseDate" ,
+                    "movies/released/{year}/{month}" ,
+                    new { Controller = "Movies" , action = "ByReleaseDate" } ,
+                    new { year = @"\d{4}" , month = @"\d{2}" });
 
 
                 routes.MapRoute(
-                    name: "default",
+                    name: "default" ,
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
