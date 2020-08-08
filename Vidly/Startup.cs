@@ -27,6 +27,8 @@ namespace Vidly
             });
 
 
+
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
