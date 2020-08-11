@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Movie>
+@*This page replaced to old Random View Page*@
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container row p-0 m-0">
+    <div class=" col-6 ">
+        <h2 class="text-success">Movie List</h2>
+    </div>
+    <div class="col-12 border p-3">
+        <table id="customer_Table" class="table table-hover table-bordered" style="width:100%">
+            <thead class="table-light">
+                <tr>
+                    <th>
+                        Movie Name
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var movie in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.ActionLink(movie.Name , "movieDetails" , new { movie.Id })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

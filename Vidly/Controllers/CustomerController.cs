@@ -6,6 +6,35 @@ namespace Vidly.Controllers
 {
     public class CustomerController : Controller
     {
+        private ApplicationDbContext _context;
+        public CustomerController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+        public ViewResult Index()
+        {
+            //var customers = GetCustomers();
+            var customers = _context.Customers.ToList();
+            return View(customers);
+        }
+        public ActionResult Details(int id)
+        {
+            //var customer = GetCustomers().SingleOrDefault(c => c.Id == id);
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
+
+            if (customer == null)
+                return NotFound("Error");
+            return View(customer);
+        }
+        private IEnumerable<Customer> GetCustomers()
+        {
+            return new List<Customer>
+            {
+                new Customer{Id=1,Name="John Smith"},
+                new Customer{Id=2,Name="Mary Jane"}
+            };
+        }
+
         //static List<Customer> customers = new List<Customer>()
         //{
         //    new Customer
@@ -24,7 +53,6 @@ namespace Vidly.Controllers
         //        Id=3,
         //    }
         //};
-
 
         //[Route("~/Customers")]
         //public IActionResult Customers()
@@ -47,26 +75,5 @@ namespace Vidly.Controllers
         //    return View(customer);
 
         //}
-
-        public ViewResult Index()
-        {
-            var customers = GetCustomers();
-            return View(customers);
-        }
-        public ActionResult Details(int id)
-        {
-            var customer = GetCustomers().SingleOrDefault(c => c.Id == id);
-            if (customer == null)
-                return NotFound();
-            return View(customer);
-        }
-        private IEnumerable<Customer> GetCustomers()
-        {
-            return new List<Customer>
-            {
-                new Customer{Id=1,Name="John Smith"},
-                new Customer{Id=2,Name="Mary Jane"}
-            };
-        }
     }
 }

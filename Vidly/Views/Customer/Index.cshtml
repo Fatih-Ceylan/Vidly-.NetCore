@@ -13,12 +13,11 @@
                 <tr>
                     <th>
                         @{
-                            var changeTitle =  Model.Count() != 0 ? "Customer Name" : "We don't have any customers yet :(";
-
+                            var changeTitle = Model.Count() != 0 ? "Customer Name" : "We don't have any customers yet :(";
                             @changeTitle
-
                         }
                     </th>
+                    <th>Discount Rate</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,6 +27,7 @@
                         <td>
                             @Html.ActionLink(customer.Name , "details" , new { customer.Id })
                         </td>
+                        <td></td>
                     </tr>
                 }
             </tbody>
