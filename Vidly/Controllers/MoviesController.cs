@@ -7,9 +7,20 @@ namespace Vidly.Controllers
 {
     public class MoviesController : Controller
     {
+        //static List<RandomMovieViewModel> movies = new List<RandomMovieViewModel>()
+        //{
+        //    new RandomMovieViewModel
+        //    {
+        //       Movie= new Movie{Name="Wall-e"}
+        //    },
+        //    new RandomMovieViewModel
+        //    {
+        //        Movie = new Movie{Name="Matrix"}
+        //    }
+        //};
         public IActionResult Random()
         {
-            var movie = new Movies()
+            var movie = new Movie()
             {
                 Name = "Shrek!" ,
             };
@@ -53,6 +64,6 @@ namespace Vidly.Controllers
         {
             return Content(year + "/" + month);
         }
-     
+
     }
 }
