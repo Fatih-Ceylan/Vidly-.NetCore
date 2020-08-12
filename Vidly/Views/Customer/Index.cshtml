@@ -33,8 +33,14 @@
             </tbody>
         </table>
         @*@if (Model.Count() == 0)
-            {
-                var className = "We don't have any customers yet :(";
-            }*@
+                    {
+                        var className = "We don't have any customers yet :(";
+                    }
+
+                                 or
+            @if (!Model.Any())
+                    {
+                         <p>We don't have any customers yet.</p>
+                    }*@
     </div>
 </div>
