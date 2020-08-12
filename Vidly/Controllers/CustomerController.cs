@@ -35,7 +35,7 @@ namespace Vidly.Controllers
                 new Customer{Id=2,Name="Mary Jane"}
             };
         }
-
+        /* No longer needed codes */
         //static List<Customer> customers = new List<Customer>()
         //{
         //    new Customer
