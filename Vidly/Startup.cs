@@ -55,6 +55,7 @@ namespace Vidly
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseBrowserLink();
 
             app.UseAuthentication();
 
