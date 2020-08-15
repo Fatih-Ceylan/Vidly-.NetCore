@@ -1,4 +1,4 @@
-﻿<nav class="navbar navbar-expand-lg navbar-dark  bg-dark navbar-toggler mb-3">
+﻿<nav class="navbar navbar-expand-lg navbar-dark blue-gradient navbar-toggler mb-3">
     <div class="container">
         <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Vidly</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarContent"
@@ -26,6 +26,153 @@
     </div>
 </nav>
 
+<!--#region Custom button stylization !-->
+<a class="btn btn-info btn-lg rounded">Info</a>
+
+<!-- simple colored square button -->
+<button type="button" class="btn btn-warning btn-square">Warning</button>
+
+<!-- Outline on hover-->
+<button type="button" class="btn btn-outline-primary btn-hover btn-rounded waves-effect" style=" border-radius: 0 !important;">Primary</button>
+
+<!-- Rounded color on hover -->
+<button type="button" class="btn btn-hover btn-hover-secondary btn-rounded">Secondary</button>
+
+<!-- Flat button color changes after click -->
+<button type="button" class="btn btn-hover btn-hover-success btn-flat">Success</button>
+
+<!-- Waves color button -->
+<button type="button" class="btn btn-hover btn-hover-danger btn-flat waves-danger ">Danger</button>
+
+
+<style>
+
+    .btn-hover {
+        background-color: transparent !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        border: 1px solid transparent !important;
+        background-image: none;
+        border-radius: 30px;
+    }
+
+    .btn-hover-primary {
+        color: #4285F4 !important;
+    }
+
+        .btn-hover-primary:hover {
+            color: #fff !important;
+            background-color: #4285F4 !important;
+            border-color: #4285F4 !important;
+        }
+
+    .btn-hover-default {
+        color: #2BBBAD !important;
+    }
+
+        .btn-hover-default:hover {
+            color: #fff !important;
+            background-color: #2BBBAD !important;
+            border-color: #2BBBAD !important;
+        }
+
+    .btn-hover-secondary {
+        color: #AA66CC !important;
+    }
+
+        .btn-hover-secondary:hover {
+            color: #fff !important;
+            background-color: #AA66CC !important;
+            border-color: #AA66CC !important;
+        }
+
+    .btn-hover-success {
+        color: #00C851 !important;
+    }
+
+        .btn-hover-success:hover {
+            color: #fff !important;
+            background-color: #00C851 !important;
+            border-color: #00C851 !important;
+        }
+
+    .btn-hover-info {
+        color: #33B5E5 !important;
+    }
+
+        .btn-hover-info:hover {
+            color: #fff !important;
+            background-color: #33B5E5 !important;
+            border-color: #33B5E5 !important;
+        }
+
+    .btn-hover-warning {
+        color: #FF8800 !important;
+    }
+
+        .btn-hover-warning:hover {
+            color: #fff !important;
+            background-color: #FF8800 !important;
+            border-color: #FF8800 !important;
+        }
+
+    .btn-hover-danger {
+        color: #FF3547 !important;
+    }
+
+        .btn-hover-danger:hover {
+            color: #fff !important;
+            background-color: #FF3547 !important;
+            border-color: #FF3547 !important;
+        }
+
+    .btn-square {
+        -webkit-border-radius: 0 !important;
+        border-radius: 0 !important;
+    }
+
+    .btn-flat:hover {
+        color: white !important;
+    }
+
+    .btn-flat:focus {
+        background: transparent !important;
+        color: black !important;
+        border: transparent !important;
+    }
+
+    .waves-effect.waves-primary .waves-ripple {
+        background-color: rgba(66,133,244, .6);
+    }
+
+    .waves-effect.waves-default .waves-ripple {
+        background-color: rgba(43,187,173, .6);
+    }
+
+    .waves-effect.waves-secondary .waves-ripple {
+        background-color: rgba(170,102,204, .6);
+    }
+
+    .waves-effect.waves-success .waves-ripple {
+        background-color: rgba(0,200,81, .6);
+    }
+
+    .waves-effect.waves-info .waves-ripple {
+        background-color: rgba(51,181,229, .6);
+    }
+
+    .waves-effect.waves-warning .waves-ripple {
+        background-color: rgba(255,187,51, .6);
+    }
+
+    .waves-effect.waves-danger .waves-ripple {
+        background-color: rgba(255,68,68, .6);
+        color: inherit !important;
+    }
+</style>
+
+<!--#endregion -->
+<!--#region Old NavBar-->
 @*<div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -45,3 +192,4 @@
     </div>
         </div>
     </div>*@
+<!--#endregion-->
