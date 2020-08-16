@@ -17,7 +17,8 @@
                             @changeTitle
                         }
                     </th>
-                    <th>Discount Rate</th>
+                    @*<th>Discount Rate</th>*@
+                    <th>Membership Type</th>
                 </tr>
             </thead>
             <tbody>
@@ -27,10 +28,22 @@
                         <td>
                             @Html.ActionLink(customer.Name , "details" , new { customer.Id })
                         </td>
-                        <td>@customer.MembershipType.DiscountRate%</td>
+                        <td>@customer.MembershipType.Name</td>
                     </tr>
                 }
             </tbody>
+            @* Discount Rate View
+                    <tbody>
+                    @foreach (var customer in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.ActionLink(customer.Name , "details" , new { customer.Id })
+                            </td>
+                            <td>@customer.MembershipType.DiscountRate%</td>
+                        </tr>
+                    }
+                </tbody>*@
         </table>
         @*@if (Model.Count() == 0)
                     {
