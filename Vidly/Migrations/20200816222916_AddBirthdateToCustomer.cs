@@ -1,6 +1,5 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
-
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+using System;
 namespace Vidly.Migrations
 {
     public partial class AddBirthdateToCustomer : Migration
@@ -8,16 +7,15 @@ namespace Vidly.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<DateTime>(
-                name: "Birthdate",
-                table: "Customers",
-                type: "Date",
+                name: "Birthdate" ,
+                table: "Customers" ,
+                type: "Date" ,
                 nullable: true);
         }
-
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "Birthdate",
+                name: "Birthdate" ,
                 table: "Customers");
         }
     }
