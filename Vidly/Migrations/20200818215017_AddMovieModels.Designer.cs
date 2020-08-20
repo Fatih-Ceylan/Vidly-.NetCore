@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Vidly.Models;
 
 namespace Vidly.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200818215017_AddMovieModels")]
+    partial class AddMovieModels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -204,19 +206,6 @@ namespace Vidly.Migrations
                     b.ToTable("Customers");
                 });
 
-            modelBuilder.Entity("Vidly.Models.Genre", b =>
-                {
-                    b.Property<byte>("Id");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Genre");
-                });
-
             modelBuilder.Entity("Vidly.Models.MembershipType", b =>
                 {
                     b.Property<byte>("Id");
@@ -240,23 +229,15 @@ namespace Vidly.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime?>("DateAdded")
-                        .HasColumnType("Date");
+                    b.Property<DateTime?>("DateAdded");
 
-                    b.Property<byte>("GenreId");
+                    b.Property<string>("Genre");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50);
+                    b.Property<string>("Name");
 
-                    b.Property<byte>("NumberInStock");
-
-                    b.Property<DateTime?>("ReleaseDate")
-                        .HasColumnType("Date");
+                    b.Property<DateTime?>("ReleaseDate");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("GenreId");
 
                     b.ToTable("Movies");
                 });
@@ -311,14 +292,6 @@ namespace Vidly.Migrations
                     b.HasOne("Vidly.Models.MembershipType", "MembershipType")
                         .WithMany()
                         .HasForeignKey("MembershipTypeId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Vidly.Models.Movie", b =>
-                {
-                    b.HasOne("Vidly.Models.Genre", "Genre")
-                        .WithMany()
-                        .HasForeignKey("GenreId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

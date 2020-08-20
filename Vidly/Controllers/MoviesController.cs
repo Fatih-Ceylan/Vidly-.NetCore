@@ -6,24 +6,37 @@ namespace Vidly.Controllers
 {
     public class MoviesController : Controller
     {
-        public IActionResult Index(int? pageIndex , string sortBy)
-        {
-            //if (!pageIndex.HasValue)
-            //{
-            //    pageIndex = 1;
-            //}
-            //if (string.IsNullOrWhiteSpace(sortBy))
-            //{
-            //    sortBy = "Name";
-            //}
-            //return Content(string.Format("pageIndex={0} & sortBy={1}" , pageIndex , sortBy));
+        private ApplicationDbContext _context;
 
-            var movie = GetMovies();
-            return View(movie);
-        }
-        public ActionResult movieDetails(int id)
+        public MoviesController(ApplicationDbContext context)
         {
-            var movie = GetMovies().SingleOrDefault(c => c.Id == id);
+            _context = context;
+        }
+        public IActionResult Index()
+        {
+            var movies = _context.Movies.ToList();
+            return View(movies);
+        }
+
+        //public IActionResult Index(int? pageIndex , string sortBy)
+        //{
+        //    if (!pageIndex.HasValue)
+        //    {
+        //        pageIndex = 1;
+        //    }
+        //    if (string.IsNullOrWhiteSpace(sortBy))
+        //    {
+        //        sortBy = "Name";
+        //    }
+        //    return Content(string.Format("pageIndex={0} & sortBy={1}" , pageIndex , sortBy));
+
+        //    var movie = GetMovies();
+        //    return View(movie);
+        //}
+        public ActionResult MovieDetails(int id)
+        {
+            //var movie = GetMovies().SingleOrDefault(c => c.Id == id);
+            var movie = _context.Movies.SingleOrDefault(m => m.Id == id);
             if (movie == null)
                 return NotFound();
             return View(movie);
