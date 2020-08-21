@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 using System.Linq;
 using Vidly.Models;
 namespace Vidly.Controllers
@@ -18,23 +17,6 @@ namespace Vidly.Controllers
             var movies = _context.Movies.Include(m => m.Genre).ToList();
             return View(movies);
         }
-
-        //public IActionResult Index(int? pageIndex , string sortBy)
-        //{
-        //    if (!pageIndex.HasValue)
-        //    {
-        //        pageIndex = 1;
-        //    }
-        //    if (string.IsNullOrWhiteSpace(sortBy))
-        //    {
-        //        sortBy = "Name";
-        //    }
-        //    return Content(string.Format("pageIndex={0} & sortBy={1}" , pageIndex , sortBy));
-
-        //    var movie = GetMovies();
-        //    return View(movie);
-        //}
-
         public ActionResult MovieDetails(int id)
         {
             //var movie = GetMovies().SingleOrDefault(c => c.Id == id);
@@ -63,6 +45,7 @@ namespace Vidly.Controllers
             return Content("id" + id);
         }
 
+        #region OldInstance
         //public IActionResult Random()
         //{
         //    var movie = new Movie()
@@ -88,16 +71,33 @@ namespace Vidly.Controllers
         //    return RedirectToAction("Privacy" , "Home");
         //}
 
+        //public IActionResult Index(int? pageIndex , string sortBy)
+        //{
+        //    if (!pageIndex.HasValue)
+        //    {
+        //        pageIndex = 1;
+        //    }
+        //    if (string.IsNullOrWhiteSpace(sortBy))
+        //    {
+        //        sortBy = "Name";
+        //    }
+        //    return Content(string.Format("pageIndex={0} & sortBy={1}" , pageIndex , sortBy));
+
+        //    var movie = GetMovies();
+        //    return View(movie);
+        //}
+        #endregion
+
         #region Movie Instance
-        private IEnumerable<Movie> GetMovies()
-        {
-            return new List<Movie>
-            {
-                new Movie{Id=1,Name="Matrix"},
-                new Movie{Id=2,Name="Wall-e"},
-                new Movie{Id=3,Name="Shrek"}
-            };
-        }
+        //private IEnumerable<Movie> GetMovies()
+        //{
+        //    return new List<Movie>
+        //    {
+        //        new Movie{Id=1,Name="Matrix"},
+        //        new Movie{Id=2,Name="Wall-e"},
+        //        new Movie{Id=3,Name="Shrek"}
+        //    };
+        //}
 
         //static List<RandomMovieViewModel> movies = new List<RandomMovieViewModel>()
         //{
