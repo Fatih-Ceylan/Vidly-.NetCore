@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using Vidly.Models;
@@ -14,7 +15,7 @@ namespace Vidly.Controllers
         }
         public IActionResult Index()
         {
-            var movies = _context.Movies.ToList();
+            var movies = _context.Movies.Include(m => m.Genre).ToList();
             return View(movies);
         }
 
@@ -33,20 +34,23 @@ namespace Vidly.Controllers
         //    var movie = GetMovies();
         //    return View(movie);
         //}
+
         public ActionResult MovieDetails(int id)
         {
             //var movie = GetMovies().SingleOrDefault(c => c.Id == id);
-<<<<<<< Updated upstream
-            var movie = _context.Movies.SingleOrDefault(m => m.Id == id);
-=======
+
             /*since we get genre name and movie name together we update this linq
               var movie = _context.Movies.SingleOrDefault(m => m.Id == id);*/
 
             var movie = _context.Movies.Include(m => m.Genre).SingleOrDefault(m => m.Id == id);
->>>>>>> Stashed changes
             if (movie == null)
                 return NotFound();
             return View(movie);
+        }
+        public ActionResult GenreDetails(int id)
+        {
+            var genre = _context.Movies.Include(g => g.GenreId == id).ToString();
+            return View(genre);
         }
 
         // You can use attribute routing instead of map route inside startup.cs [Route("movies/released/{year}/{month:regex(\\d{4}):range(1,12)}")]
