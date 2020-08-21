@@ -11,9 +11,14 @@ namespace Vidly.Controllers
         {
             _context = context;
         }
+        public ActionResult New()
+        {
+            return View();
+        }
         public ViewResult Index()
         {
             //var customers = GetCustomers();
+            //include extension used for eager loading. otherwise we get null ex ref
             var customers = _context.Customers.Include(c => c.MembershipType).ToList();
             return View(customers);
         }
