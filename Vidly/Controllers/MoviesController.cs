@@ -36,7 +36,14 @@ namespace Vidly.Controllers
         public ActionResult MovieDetails(int id)
         {
             //var movie = GetMovies().SingleOrDefault(c => c.Id == id);
+<<<<<<< Updated upstream
             var movie = _context.Movies.SingleOrDefault(m => m.Id == id);
+=======
+            /*since we get genre name and movie name together we update this linq
+              var movie = _context.Movies.SingleOrDefault(m => m.Id == id);*/
+
+            var movie = _context.Movies.Include(m => m.Genre).SingleOrDefault(m => m.Id == id);
+>>>>>>> Stashed changes
             if (movie == null)
                 return NotFound();
             return View(movie);
