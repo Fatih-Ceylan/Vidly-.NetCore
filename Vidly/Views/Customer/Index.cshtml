@@ -26,7 +26,7 @@
                 {
                     <tr>
                         <td>
-                            @Html.ActionLink(customer.Name , "details" , new { customer.Id })
+                            @Html.ActionLink(customer.Name , "Edit" , "Customer" , new { id = customer.Id })
                         </td>
                         <td>@customer.MembershipType.Name</td>
                     </tr>

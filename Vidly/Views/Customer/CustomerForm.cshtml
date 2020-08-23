@@ -1,0 +1,38 @@
+﻿@model Vidly.ViewModels.CustomerFormViewModel
+@{
+    ViewData["Title"] = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>New Customer</h1>
+
+@using (Html.BeginForm("Save" , "Customer"))
+{
+    <div class="form-group col-5">
+        @Html.LabelFor(m => m.Customer.Name)
+        @Html.TextBoxFor(m => m.Customer.Name , new { @class = "form-control" })
+    </div>
+
+    <div class="form-group col-5">
+        @Html.LabelFor(m => m.Customer.Birthdate)
+        @Html.TextBoxFor(m => m.Customer.Birthdate , "{0:d MMM yyyy}" , new { @class = "form-control" })
+    </div>
+
+    <div class="form-group col-5">
+        @*selectlist definitions are case sensitive. We cant use "id" instead of "Id"*@
+        @Html.LabelFor(m => m.Customer.MembershipTypeId)
+        @Html.DropDownListFor(m => m.Customer.MembershipTypeId , new SelectList(Model.MembershipTypes , "Id" , "Name" , "Select Membership Type") , new { @class = "form-control" })
+    </div>
+
+    <div class="form-group col-5 custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="defaultUnchecked" asp-for="Customer.IsSubscribedToNewsletter">
+        <label class=" form-group custom-control-label ml-3" for="defaultUnchecked"> Subscribe to newsletter? </label>
+    </div>
+
+    @Html.HiddenFor(m => m.Customer.Id)
+
+    <div class="ml-2">
+        <button type="submit" class="btn rounded-pill btn-green">Save</button>
+        <a asp-action="Index">Back to List</a>
+    </div>
+}

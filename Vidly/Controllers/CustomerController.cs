@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using Vidly.Models;
+using Vidly.ViewModels;
+
 namespace Vidly.Controllers
 {
     public class CustomerController : Controller
@@ -13,7 +15,47 @@ namespace Vidly.Controllers
         }
         public ActionResult New()
         {
-            return View();
+            var membershipTypes = _context.MembershipTypes.ToList();
+            var viewModel = new CustomerFormViewModel
+            {
+                MembershipTypes = membershipTypes
+            };
+            return View("CustomerForm" , viewModel);
+        }
+        [HttpPost]
+        public ActionResult Save(Customer customer)
+        {
+            if (customer.Id == 0)
+            {
+                _context.Customers.Add(customer);
+            }
+            else
+            {
+                var customerInDB = _context.Customers.Single(c => c.Id == customer.Id);
+
+                customerInDB.Name = customer.Name;
+                customerInDB.Birthdate = customer.Birthdate;
+                customerInDB.IsSubscribedToNewsletter = customer.IsSubscribedToNewsletter ;
+                customerInDB.MembershipTypeId = customer.MembershipTypeId;
+
+            }
+            _context.SaveChanges();
+            return RedirectToAction("Index" , "Customer");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
+            if (customer == null)
+            {
+                return NotFound();
+            }
+            var viewModel = new CustomerFormViewModel
+            {
+                Customer = customer ,
+                MembershipTypes = _context.MembershipTypes.ToList()
+            };
+            return View("CustomerForm" , viewModel);
         }
         public ViewResult Index()
         {
@@ -25,10 +67,11 @@ namespace Vidly.Controllers
         public ActionResult Details(int id)
         {
             //var customer = GetCustomers().SingleOrDefault(c => c.Id == id);
-            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
+            var customer = _context.Customers.Include(c => c.MembershipType).SingleOrDefault(c => c.Id == id);
 
             if (customer == null)
                 return NotFound("Error");
+
             return View(customer);
         }
 
