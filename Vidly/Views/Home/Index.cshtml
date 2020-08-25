@@ -1,6 +1,11 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+
+
 
 <div class="text-center">
     <h1 class="display-4">Welcome idiot</h1>
@@ -8,3 +13,32 @@
 </div>
 
 <a class="btn btn-primary" asp-action="Index" asp-controller="Movies">Go to Movies</a>
+
+@*<p class="p1">lorem ipsum dolor sit amet</p>*@
+<button type="button" class="btn btn-info">Click me to hide paragraphs</button>
+
+<script>
+
+    $(document).ready(function () {
+        $("button").click(function () {
+            $(".p1").css({ "background-color": "red", "font-size": "25px" });
+
+        });
+    });
+
+</script>
+
+
+<p class="p1">List 1:</p>
+<ul>
+    <li>Coffee</li>
+    <li>Milk</li>
+    <li>Tea</li>
+</ul>
+
+<p>List 2:</p>
+<ul>
+    <li>Coffee</li>
+    <li>Milk</li>
+    <li>Tea</li>
+</ul>
